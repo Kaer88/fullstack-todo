@@ -4,11 +4,11 @@ import { createTodoQuery } from "./todo-queries";
 
 const todoModel = {
     create: async (id, text) => {
-        
+
         return client.query(createTodoQuery, [id, text, false])
     },
     read: async (id) => {
-
+        return client.query("SELECT * FROM todo WHERE id=$1", [id])
     },
     readAll: async () => {
 
