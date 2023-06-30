@@ -9,6 +9,10 @@ const userModel = {
     },
 
 
+    read: async (email) => {
+        return client.query("SELECT * FROM users WHERE email=$1", [email])
+    }
+
 }
 
 export default userModel

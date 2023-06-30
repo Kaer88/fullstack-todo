@@ -4,7 +4,6 @@ import client from "./db/db";
 import initDb from './db/db-init';
 
 
-console.log()
 app.listen(PORT, () => {
     console.log("I'm alive")
 })

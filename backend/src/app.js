@@ -1,7 +1,6 @@
 import express from 'express';
 import cors from 'cors';
 import todoRouter from './todo/todo-routes';
-import authController from '../auth/auth-controller';
 import authRouter from '../auth/auth-routes';
 
 const app = express()
