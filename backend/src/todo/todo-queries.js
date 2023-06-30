@@ -1,9 +1,8 @@
-export const createTodoQuery = `
-    INSERT INTO todos(id ,text, done) VALUES ($1, $2, $3)
-`
+export const createTodoQuery = "INSERT INTO todo(id ,text, isdone) VALUES ($1, $2, $3)";
 
-export const readTodoQuery = "SELECT * FROM todos WHERE id = $1";
-export const readAllTodoQuery = "SELECT * FROM todos";
+
+export const readTodoQuery = "SELECT * FROM todo WHERE id = $1";
+export const readAllTodoQuery = "SELECT * FROM todo";
 export const updateTodoQuery = `
     UPDATE todo
     SET id = $1,

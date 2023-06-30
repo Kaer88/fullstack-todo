@@ -1,8 +1,11 @@
 import client from "../db/db";
+import { createTodoQuery } from "./todo-queries";
+
 
 const todoModel = {
     create: async (id, text) => {
-
+        
+        return client.query(createTodoQuery, [id, text, false])
     },
     read: async (id) => {
 
