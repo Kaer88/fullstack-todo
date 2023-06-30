@@ -10,10 +10,12 @@ const todoModel = {
     read: async (id) => {
         return client.query("SELECT * FROM todo WHERE id=$1", [id])
     },
-    readAll: async () => {
 
+    readAll: async () => {
+        return client.query("SELECT * FROM todo")
     },
-    update: async (id, { text, done }) => {
+
+    update: async (id, text, done) => {
 
     },
     delete: async (id) => {

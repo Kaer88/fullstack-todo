@@ -3,7 +3,6 @@ import todoService from "./todo-service"
 const todoController = {
     createTodo: async (req, res, next) => {
         const { text } = req.body
-        console.log("bejövő text", text)
 
         try {
             const newTodo = await todoService.createTodo(text);
@@ -15,13 +14,24 @@ const todoController = {
     },
 
     readSingleTodo: async (req, res, next) => {
-        const { id } = req.body;
+        const { id } = req.query;
+        console.log(id)
         try {
             const todo = await todoService.readTodo(id);
             res.json(todo.rows);
-        } catch(err) {
+        } catch (err) {
             console.log(err);
             next(err);
+        }
+
+    },
+
+    readAllTodos: async (req, res, next) => {
+        try {
+            const todos = await todoService.readAll()
+            res.json(todos.rows)
+        } catch(err) {
+            console.log(err)
         }
 
     }

@@ -4,7 +4,7 @@ import { DB_HOST, DB_NAME, DB_PASSWORD, DB_USER, DB_PORT } from "../constants/co
 
 const client = new Client({
     host: DB_HOST,
-    port: 3001,
+    port: DB_PORT,
     database: DB_NAME,
     user: DB_USER,
     password: DB_PASSWORD,

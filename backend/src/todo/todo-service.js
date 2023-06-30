@@ -10,6 +10,12 @@ const todoService = {
 
     readTodo: async (id) => {
         return todoModel.read(id)
+    },
+
+    readAll: () => {
+
+        return todoModel.readAll()
+
     }
 
 }

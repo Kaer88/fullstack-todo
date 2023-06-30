@@ -4,7 +4,7 @@ import todoController from "./todo-controller";
 
 const todoRouter = Router();
 
-todoRouter.get("/gettodo", todoController.readSingleTodo)
+todoRouter.get("/gettodo/:id", todoController.readSingleTodo)
 todoRouter.post("/newtodo", todoController.createTodo)
-
+todoRouter.get("/getall", todoController.readAllTodos)
 export default todoRouter
