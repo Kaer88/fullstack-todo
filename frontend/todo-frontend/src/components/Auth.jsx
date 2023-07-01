@@ -1,14 +1,14 @@
 import { useContext, useEffect } from "react";
-import { authContext } from "../contexts/authContext";
 import { useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
 
 export default function Auth({ children }) {
-    const { authenticatedUser } = useContext(authContext)
     const navigate = useNavigate("/")
+    const [cookies] = useCookies("usertoken")
 
     useEffect(() => {
-        if (Object.keys(authenticatedUser).length === 0) navigate("/")
-    })
+        if (!cookies.usertoken?.token) navigate("/")
+    }, [])
 
     return (
         children

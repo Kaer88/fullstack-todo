@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import Auth from './components/Auth'
+import UserDashboard from './pages/UserDashboard'
 
 function App() {
 
@@ -9,7 +10,7 @@ function App() {
 
     <Auth>
 
-      <h1>itt lesz majd minden</h1>
+      <UserDashboard />
     
     </Auth>
 

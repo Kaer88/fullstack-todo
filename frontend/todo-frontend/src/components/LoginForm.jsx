@@ -20,12 +20,10 @@ export default function LoginForm() {
             [e.target.name]: e.target.value
         })
     }
-    console.log(authenticatedUser)
     const sendLogin = async () => {
         try {
             const responseToken = await userServices.login(loginInput);
-            setCookies("usertoken", responseToken.token)
-            console.log(responseToken)
+            setCookies("usertoken", responseToken)
             setAuthenticatedUser({
                 ...responseToken
             })

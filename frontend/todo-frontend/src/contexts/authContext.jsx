@@ -7,11 +7,10 @@ export const authContext = createContext({});
 export function AuthProvider({ children }) {
     const [cookies, setCookies] = useCookies(["usertoken"])
     const [authenticatedUser, setAuthenticatedUser] = useState({})
-   
     useEffect(() => {
         if(cookies) {
-            setAuthenticatedUser(cookies)}
-    })
+            setAuthenticatedUser(cookies.usertoken)}
+    },[])
 
 
 
