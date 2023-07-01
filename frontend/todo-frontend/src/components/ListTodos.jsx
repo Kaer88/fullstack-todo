@@ -16,6 +16,7 @@ export default function ListTodos({ todos }) {
                     <div key={todo.id} className="todo">
                         <p>{todo.text}</p>
                         {/true/.test(todo.isdone) ? <p>kész</p> : <p>nincs kész</p>}
+                        <p>{todo.date.slice(0,10)}</p>
                     </div>
                 )
             })}
