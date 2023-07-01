@@ -1,15 +1,18 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import userServices from "../services/userServices"
 import { useCookies } from "react-cookie"
+import { useNavigate } from "react-router-dom"
+import { authContext } from "../contexts/authContext"
 
 export default function LoginForm() {
 
     const [cookies, setCookies] = useCookies(["usertoken"])
-
+    const { authenticatedUser, setAuthenticatedUser } = useContext(authContext)
     const [loginInput, setLoginInput] = useState({
         email: "",
         password: ""
     })
+    const navigate = useNavigate()
 
     const handleLoginInput = (e) => {
         setLoginInput({
@@ -17,12 +20,16 @@ export default function LoginForm() {
             [e.target.name]: e.target.value
         })
     }
-
+    console.log(authenticatedUser)
     const sendLogin = async () => {
         try {
             const responseToken = await userServices.login(loginInput);
             setCookies("usertoken", responseToken.token)
             console.log(responseToken)
+            setAuthenticatedUser({
+                ...responseToken
+            })
+            navigate("/protected")
         } catch (err) {
             console.log(err)
         }

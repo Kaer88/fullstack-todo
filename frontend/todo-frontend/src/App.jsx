@@ -1,14 +1,18 @@
 import { useState } from 'react'
 import './App.css'
+import Auth from './components/Auth'
 
 function App() {
 
 
   return (
-    <>
 
-      <h1>Bent vagy</h1>
-    </>
+    <Auth>
+
+      <h1>itt lesz majd minden</h1>
+    
+    </Auth>
+
   )
 }
 
