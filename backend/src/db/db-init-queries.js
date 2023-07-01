@@ -12,8 +12,8 @@ export const createUsersTable = `
 export const createTodoTable = `
 CREATE TABLE IF NOT EXISTS todo(
     id VARCHAR(24) PRIMARY KEY,
-    text VARCHAR(32) NOT NULL, 
-    isdone VARCHAR(32) NOT NULL,
+    text TEXT NOT NULL, 
+    isdone BOOLEAN NOT NULL,
     date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     userid VARCHAR(24),
     FOREIGN KEY(userid) REFERENCES users(id)

@@ -16,11 +16,10 @@ const authService = {
 
     login: async (email, password) => {
         const foundUser = await userModel.read(email)
-        console.log(foundUser)
         if (!foundUser) throw new Error("invalid email")
         if (await bcrypt.compare(password, foundUser.rows[0].password)) {
             const token = jwt.sign({ id: foundUser.rows[0].id, email: foundUser.rows[0].email }, JWT_SECRET)
-            return { token }
+            return { token, userid: foundUser.rows[0].id }
         } else {
             throw new Error("invalid jelszó Baby!!")
         }

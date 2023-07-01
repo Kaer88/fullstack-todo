@@ -17,7 +17,7 @@ const todoModel = {
     },
 
     readAllId: async (id) => {
-        return client.query("SELECT * FROM todo WHERE userid=$1", [id])
+        return client.query("SELECT * FROM todo WHERE userid=$1 ORDER BY(date) DESC", [id])
     },
 
     update: async (id, text, done) => {

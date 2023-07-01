@@ -21,8 +21,7 @@ const authController = {
             const { email, password } = req.body;
             const loggedInUserToken = await authService.login(email, password)
             res.cookie(loggedInUserToken.token)
-            
-            console.log(res)
+            console.log(loggedInUserToken)
             res.json(loggedInUserToken)
 
         } catch (err) {
