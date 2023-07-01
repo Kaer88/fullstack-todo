@@ -5,6 +5,7 @@ const authController = {
 
     register: async (req, res, next) => {
         const { email, password } = req.body;
+        console.log(email, password)
         try {
             const registeredUser = await authService.register(email, password)
             res.json(registeredUser)
@@ -18,11 +19,9 @@ const authController = {
     login: async (req, res, next) => {
         try {
             const { email, password } = req.body;
-            console.log(email)
-            console.log(password)
-            const loggedInUser = await authService.login(email, password)
-            console.log(loggedInUser)
-            res.send("ok")
+            const loggedInUserToken = await authService.login(email, password)
+            console.log(loggedInUserToken)
+            res.json(loggedInUserToken)
 
         } catch (err) {
             console.log(err)

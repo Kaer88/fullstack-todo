@@ -1,27 +1,29 @@
 import { nanoid } from "nanoid"
 import userModel from "../src/user/user-model"
 import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
+import { JWT_SECRET } from "../src/constants/constants"
 
 const authService = {
 
-    register: async ({ email, password }) => {
-        console.log("service: ", email)
+    register: async (email, password) => {
         const id = nanoid(8);
-        const hashedPw = await bcrypt.hash(password, 5);
+        console.log(password)
+        const hashedPw = await bcrypt.hash(password, 10);
         return userModel.createUser(id, email, hashedPw);
 
     },
 
     login: async (email, password) => {
         const foundUser = await userModel.read(email)
+        console.log(foundUser)
         if (!foundUser) throw new Error("invalid email")
         if (await bcrypt.compare(password, foundUser.rows[0].password)) {
-            console.log("yes")
+            const token = jwt.sign({ id: foundUser.rows[0].id, email: foundUser.rows[0].email }, JWT_SECRET)
+            return { token }
         } else {
-            throw new Error("invalid jelszó Baby")
+            throw new Error("invalid jelszó Baby!!")
         }
-        
-
 
     }
 
