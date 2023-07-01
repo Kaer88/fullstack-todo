@@ -1,4 +1,4 @@
-export const createTodoQuery = "INSERT INTO todo(id ,text, isdone) VALUES ($1, $2, $3) RETURNING *";
+export const createTodoQuery = "INSERT INTO todo(id ,text, isdone, userid) VALUES ($1, $2, $3, $4) RETURNING *";
 
 
 export const readTodoQuery = "SELECT * FROM todo WHERE id = $1";

@@ -2,10 +2,10 @@ import todoService from "./todo-service"
 
 const todoController = {
     createTodo: async (req, res, next) => {
-        const { text } = req.body
-
+        const { text } = req.body;
+        const { id } = req.params;
         try {
-            const newTodo = await todoService.createTodo(text);
+            const newTodo = await todoService.createTodo(text, id);
             res.send(newTodo.rows)
         } catch (err) {
             next(err)
@@ -14,7 +14,7 @@ const todoController = {
     },
 
     readSingleTodo: async (req, res, next) => {
-        const { id } = req.query;
+        const { id } = req.params;
         console.log(id)
         try {
             const todo = await todoService.readTodo(id);
@@ -30,8 +30,21 @@ const todoController = {
         try {
             const todos = await todoService.readAll()
             res.json(todos.rows)
-        } catch(err) {
+        } catch (err) {
             console.log(err)
+        }
+
+    },
+
+    readTodosId: async (req, res, next) => {
+        try {
+            const { id } = req.params
+            const todos = await todoService.readAllId(id)
+            console.log(todos)
+            res.json(todos.rows)
+        } catch (err) {
+            console.log(err)
+            res.send("gebasz")
         }
 
     }
