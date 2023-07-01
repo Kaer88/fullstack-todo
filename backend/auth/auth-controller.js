@@ -20,7 +20,9 @@ const authController = {
         try {
             const { email, password } = req.body;
             const loggedInUserToken = await authService.login(email, password)
-            console.log(loggedInUserToken)
+            res.cookie(loggedInUserToken.token)
+            
+            console.log(res)
             res.json(loggedInUserToken)
 
         } catch (err) {
