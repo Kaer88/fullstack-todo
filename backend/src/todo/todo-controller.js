@@ -40,7 +40,7 @@ const todoController = {
         try {
             const { id } = req.params
             const todos = await todoService.readAllId(id)
-            console.log(todos)
+         
             res.json(todos.rows)
         } catch (err) {
             console.log(err)

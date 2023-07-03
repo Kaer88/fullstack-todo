@@ -5,7 +5,6 @@ import { createTodoQuery } from "./todo-queries";
 
 const todoModel = {
     create: async (id, text, userid) => {
-        console.log(userid)
         return client.query(createTodoQuery, [id, text, false, userid])
     },
     read: async (id) => {
