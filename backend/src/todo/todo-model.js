@@ -1,11 +1,11 @@
 import { query } from "express";
 import client from "../db/db";
-import { createTodoQuery } from "./todo-queries";
+import { createTodoQuery, deleteTodoQuery } from "./todo-queries";
 
 
 const todoModel = {
-    create: async (id, text, userid) => {
-        return client.query(createTodoQuery, [id, text, false, userid])
+    create: async (id, text, userid, topicid) => {
+        return client.query(createTodoQuery, [id, text, false, userid, topicid])
     },
     read: async (id) => {
         return client.query(`
@@ -32,8 +32,8 @@ const todoModel = {
     update: async (id, text, done) => {
 
     },
-    delete: async (id) => {
-
+    delete: async (todoId, userId) => {
+        return client.query(deleteTodoQuery, [todoId, userId])
     }
 }
 

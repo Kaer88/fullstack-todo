@@ -1,4 +1,4 @@
-export const createTodoQuery = "INSERT INTO todo(id ,text, isdone, userid) VALUES ($1, $2, $3, $4) RETURNING *";
+export const createTodoQuery = "INSERT INTO todos(id ,text, isdone, userid, topicid) VALUES ($1, $2, $3, $4, $5) RETURNING *";
 
 
 export const readTodoQuery = "SELECT * FROM todo WHERE id = $1";
@@ -10,4 +10,4 @@ export const updateTodoQuery = `
         done = $3
     WHERE id = $4
 `;
-export const deleteTodoQuery = "DELETE FROM todo WHERE id = $1";
+export const deleteTodoQuery = "DELETE FROM todos WHERE id = $1 AND userid = $2";

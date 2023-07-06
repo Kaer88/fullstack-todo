@@ -18,18 +18,19 @@ export default function LoginForm() {
         setLoginInput({
             ...loginInput,
             [e.target.name]: e.target.value
-        })
+        });
     }
+    
     const sendLogin = async () => {
         try {
             const responseToken = await userServices.login(loginInput);
-            setCookies("usertoken", responseToken)
+            setCookies("usertoken", responseToken);
             setAuthenticatedUser({
                 ...responseToken
-            })
-            navigate("/protected")
+            });
+            navigate("/protected");
         } catch (err) {
-            console.log(err)
+            console.log(err);
         }
 
     }

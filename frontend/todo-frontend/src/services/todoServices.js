@@ -7,10 +7,7 @@ export default {
             headers: {
                 "Authorization": `Bearer ${userData.token}`,
                 "Content-type": "application/json"
-
             }
-
-
         })
         return response.json()
     },
@@ -25,6 +22,21 @@ export default {
             body: JSON.stringify(formData)
         })
         return response.json()
+    },
+
+    deleteTodo: async (userData, todoId) => {
+        if (!userData || !todoId) return
+        console.log(userData)
+        const deleteResponse = await fetch(`http://localhost:8080/todo/delete/${userData.userid}/${todoId}`, {
+            method: "DELETE",
+            headers: {
+                "Authorization": `Bearer ${userData.token}`,
+                "Content-type": "application/json"
+            },
+        });
+        return deleteResponse.json();
+    
+
     }
 
 }
