@@ -6,7 +6,6 @@ export default async (req, res, next) => {
     console.log(userId, tokenUserId)
     try {
         if (userId != tokenUserId) throw new Error("invalid user token pair")
-        console.log("minden raj")
         next()
 
     } catch (err) {

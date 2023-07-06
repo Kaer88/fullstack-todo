@@ -19,9 +19,7 @@ const todoService = {
     },
 
     readAllId: (id) => {
-
         return todoModel.readAllId(id)
-
     },
 
     deleteTodo: async (req) => {
