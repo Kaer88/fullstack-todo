@@ -13,7 +13,10 @@ export default function ListTodos({ todos, updateTodos }) {
         <div className="todo-list">
             {mappebleTodos?.map((todo) => {
                 return (
-                    <TodoItem key={todo.id} todo={todo} />
+                    <TodoItem
+                        key={todo.id}
+                        todo={todo}
+                        updateTodos={updateTodos} />
                     // <div key={todo.id} className="todo">
                     //     <p>{todo.text}</p>
                     //     {/true/.test(todo.isdone) ? <p>kész</p> : <p>nincs kész</p>}

@@ -4,7 +4,7 @@ import { authContext } from "../contexts/authContext"
 
 
 
-export default function TodoItem({ todo }) {
+export default function TodoItem({ todo, updateTodos }) {
     const { authenticatedUser } = useContext(authContext)
 
     const handleDeleteButton = async (e) => {

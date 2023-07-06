@@ -31,13 +31,17 @@ export default function UserDashboard() {
 
     return (
         <div id="userdashboard">
-            <NewTodo updateTodos={updateTodos} todos={todosData.userTodos} topics={topics} />
 
             <div id="todos-window">
 
                 {
                     topics.map((topicBar, idx) =>
-                        <TopicBar key={idx} todos={todosData.filter(todo => todo.topic_id === topicBar.id)} topicName={topics[idx].name} topicid={topics[idx].id} updateTodos={updateTodos} />
+                        <TopicBar
+                            key={idx}
+                            todos={todosData.filter(todo => todo.topic_id === topicBar.id)}
+                            topicName={topics[idx].name} topicid={topics[idx].id}
+                            updateTodos={updateTodos}
+                            topics={topics} />
                     )
                 }
             </div>
