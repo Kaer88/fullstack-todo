@@ -34,7 +34,7 @@ export default function UserDashboard() {
 
     return (
         <div id="userdashboard">
-            <div id="todos">
+            <div id="todos-window">
                 {
                     topics.map((topicBar, idx) =>
                         <TopicBar todos={todosData.filter(todo => todo.topic_id === topicBar.id)} topicName={topics[idx].name} updateTodos={updateTodos} />

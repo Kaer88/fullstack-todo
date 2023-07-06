@@ -9,6 +9,7 @@ export default function NewTodo({ setTodos, todos, topics, updateTodos }) {
         text: "",
         topicid: "",
     })
+
     const handleInputChange = (e) => {
         setInputState({
             ...inputState,
@@ -19,20 +20,14 @@ export default function NewTodo({ setTodos, todos, topics, updateTodos }) {
     const sendTodo = () => {
         try {
             todoServices.sendTodo(inputState, authenticatedUser)
-                .then((responseJson) => {
-                    // console.log(responseJson)
-                    // setTodos([
-                    //     responseJson[0],
-                    //     ...todos
-                    // ])
-
+                .then(() => {
                     updateTodos()
                 })
         } catch (err) {
             console.log(err)
         }
     }
-    console.log(inputState)
+    
     return (
         <div>
             <label>Topic:</label>
