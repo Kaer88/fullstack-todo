@@ -27,14 +27,14 @@ export default function NewTodo({ setTodos, todos, topics, updateTodos }) {
             console.log(err)
         }
     }
-    
+
     return (
         <div>
             <label>Topic:</label>
             <select onChange={handleInputChange} value={inputState.category} name="topicid">
                 <option></option>
                 {
-                    topics.map(topic => <option value={topic.id}>{topic.name}</option>)
+                    topics.map(topic => <option key={topic.id} value={topic.id}>{topic.name}</option>)
                 }
             </select>
             <label>todo text:</label>

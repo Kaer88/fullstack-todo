@@ -37,7 +37,7 @@ export default function UserDashboard() {
 
                 {
                     topics.map((topicBar, idx) =>
-                        <TopicBar key={idx} todos={todosData.filter(todo => todo.topic_id === topicBar.id)} topicName={topics[idx].name} updateTodos={updateTodos} />
+                        <TopicBar key={idx} todos={todosData.filter(todo => todo.topic_id === topicBar.id)} topicName={topics[idx].name} topicid={topics[idx].id} updateTodos={updateTodos} />
                     )
                 }
             </div>
