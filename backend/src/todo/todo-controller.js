@@ -7,7 +7,7 @@ const todoController = {
         const { id } = req.params;
         try {
             const newTodo = await todoService.createTodo(text, id, topicid);
-            res.send(newTodo.rows)
+            res.json(newTodo.rows)
         } catch (err) {
             next(err)
         }
