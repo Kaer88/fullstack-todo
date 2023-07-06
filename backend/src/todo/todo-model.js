@@ -8,15 +8,19 @@ const todoModel = {
         return client.query(createTodoQuery, [id, text, false, userid])
     },
     read: async (id) => {
-        return client.query("SELECT * FROM todo WHERE id=$1", [id])
+        return client.query(`
+        SELECT * FROM todos 
+        JOIN topics ON(todos.topicid = topics.id)
+        WHERE todos.userid = '1rSBXtdC'
+        `, [id])
     },
 
     readAll: async () => {
-        return client.query("SELECT * FROM todo")
+        return client.query("SELECT * FROM todos")
     },
 
     readAllId: async (id) => {
-        return client.query("SELECT * FROM todo WHERE userid=$1 ORDER BY(date) DESC", [id])
+        return client.query("SELECT * FROM todos WHERE userid=$1 ORDER BY(date) DESC", [id])
     },
 
     update: async (id, text, done) => {
