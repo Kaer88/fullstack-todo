@@ -28,12 +28,8 @@ export default function NavBar() {
             }} >
 
             <h4>Ultimate Todo</h4>
-
-            <NavDropdown title="New..">
-                <Button>Category</Button>
-            </NavDropdown>
             <NavDropdown title="Account">
-                <Button onClick={logout}>Logout</Button>
+                <NavDropdown.Item onClick={logout}>Logout</NavDropdown.Item>
             </NavDropdown>
         </Navbar >
     )
