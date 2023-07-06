@@ -12,7 +12,6 @@ export default function UserDashboard() {
     const [todosData, setTodosData] = useState([])
     const [topics, setTopics] = useState([]);
 
-    console.log(topics);
     useEffect(() => {
         updateTodos()
     }, [authenticatedUser])
@@ -21,8 +20,6 @@ export default function UserDashboard() {
         if (authenticatedUser.userid) {
             todoServices.getAllTodos(authenticatedUser)
                 .then((data) => {
-                    console.log(data)
-
                     setTodosData(data.userTodos)
                     setTopics(data.topics)
                 })
@@ -34,15 +31,17 @@ export default function UserDashboard() {
 
     return (
         <div id="userdashboard">
+            <NewTodo updateTodos={updateTodos} todos={todosData.userTodos} topics={topics} />
+
             <div id="todos-window">
+
                 {
                     topics.map((topicBar, idx) =>
-                        <TopicBar todos={todosData.filter(todo => todo.topic_id === topicBar.id)} topicName={topics[idx].name} updateTodos={updateTodos} />
+                        <TopicBar key={idx} todos={todosData.filter(todo => todo.topic_id === topicBar.id)} topicName={topics[idx].name} updateTodos={updateTodos} />
                     )
                 }
             </div>
             {/* <TopicBar todos={todosData.userTodos} topicName={""} /> */}
-            <NewTodo updateTodos={updateTodos} todos={todosData.userTodos} topics={topics} />
             {/* <ListTodos todos={todosData.userTodos} /> */}
         </div>
     )

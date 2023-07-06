@@ -1,4 +1,10 @@
-#todo-container {
+#todos-window {
+  display: flex;
+  gap: 5em;
+  justify-items: center;
+}
+
+.todo-container {
   display: flex;
   gap: 5em;
   margin: 3em;
