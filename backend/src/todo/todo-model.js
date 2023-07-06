@@ -9,7 +9,7 @@ const todoModel = {
     },
     read: async (id) => {
         return client.query(`
-        SELECT * FROM todos 
+        SELECT date, todos.id, isdone, text, todos.userid, topics.name as topic_name FROM todos 
         JOIN topics ON(todos.topicid = topics.id)
         WHERE todos.userid = '1rSBXtdC'
         `, [id])
@@ -20,7 +20,13 @@ const todoModel = {
     },
 
     readAllId: async (id) => {
-        return client.query("SELECT * FROM todos WHERE userid=$1 ORDER BY(date) DESC", [id])
+        return client.query(`
+        SELECT date, todos.id, isdone, text, todos.userid, topics.name as topic_name, topics.id as topic_id
+        FROM todos 
+        JOIN topics ON(todos.topicid = topics.id)
+        WHERE todos.userid = $1
+        ORDER BY todos.date DESC
+        `, [id])
     },
 
     update: async (id, text, done) => {

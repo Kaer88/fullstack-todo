@@ -4,6 +4,11 @@ export default {
     createUserTopic : async (topicId, userid, name) => {
         return client.query("INSERT INTO topics(id, name, userid) VALUES ($1, $2, $3) RETURNING *", [topicId, name, userid]);
 
+    },
+
+    getUserTopics: async (userid) => {
+        return client.query("SELECT * FROM topics WHERE userid = $1", [userid])
     }
+
 
 }

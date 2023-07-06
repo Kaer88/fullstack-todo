@@ -17,6 +17,7 @@ export default function ListTodos({ todos }) {
                         <p>{todo.text}</p>
                         {/true/.test(todo.isdone) ? <p>kész</p> : <p>nincs kész</p>}
                         <p>{todo.date.slice(0,10)}</p>
+                        <p>{todo.topic_name}</p>
                     </div>
                 )
             })}

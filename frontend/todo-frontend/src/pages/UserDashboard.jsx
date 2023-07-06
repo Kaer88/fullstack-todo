@@ -1,34 +1,45 @@
 import ListTodos from "../components/ListTodos";
-import NewTodo from "../components/NewTodo";
 import { useContext, useEffect, useState } from "react"
 import todoServices from "../services/todoServices"
 import { authContext } from "../contexts/authContext"
+import TopicBar from "../components/TopicBar";
+import NewTodo from '../components/NewTodo'
+
 
 export default function UserDashboard() {
 
-    const { authenticatedUser, setAuthenticatedUser } = useContext(authContext)
-    const [todos, setTodos] = useState([])
-    console.log(authenticatedUser)
+    const { authenticatedUser } = useContext(authContext)
+    const [todosData, setTodosData] = useState([])
+    const [topics, setTopics] = useState([]);
+
+    console.log(topics);
     useEffect(() => {
-        console.log(authenticatedUser)
         if (authenticatedUser.userid) {
             todoServices.getAllTodos(authenticatedUser)
                 .then((data) => {
-                    setTodos(data)
+                    console.log(data)
 
+                    setTodosData(data.userTodos)
+                    setTopics(data.topics)
                 })
 
         }
 
     }, [authenticatedUser])
-
-
-
-
+    console.log("topics: ", topics)
+    console.log(todosData)
     return (
-        <div>
-            <NewTodo setTodos={setTodos} todos={todos} />
-            <ListTodos todos={todos} />
+        <div id="userdashboard">
+            <div id="todos">
+                {
+                    topics.map((topicBar, idx) =>
+                        <TopicBar todos={todosData.filter(todo => todo.topic_id === topicBar.id)} topicName={topics[idx].name} />
+                    )
+                }
+            </div>
+            {/* <TopicBar todos={todosData.userTodos} topicName={""} /> */}
+            <NewTodo setTodosData={setTodosData} todos={todosData.userTodos} />
+            {/* <ListTodos todos={todosData.userTodos} /> */}
         </div>
     )
 

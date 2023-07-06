@@ -12,6 +12,10 @@ export default {
         return topicsModel.createUserTopic(topicId, userid, name)
 
 
+    },
+
+    getUserTopics: async (id) => {
+        return topicsModel.getUserTopics(id);
     }
 
 }

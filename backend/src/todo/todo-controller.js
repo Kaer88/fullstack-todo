@@ -1,3 +1,4 @@
+import topicsService from "../topics/topics-service";
 import todoService from "./todo-service"
 
 const todoController = {
@@ -40,8 +41,12 @@ const todoController = {
         try {
             const { id } = req.params
             const todos = await todoService.readAllId(id)
-         
-            res.json(todos.rows)
+            const topics = await topicsService.getUserTopics(id)
+            const responseObject = {
+                userTodos: todos.rows,
+                topics: topics.rows
+            }
+            res.json(responseObject)
         } catch (err) {
             console.log(err)
             res.send("gebasz")
