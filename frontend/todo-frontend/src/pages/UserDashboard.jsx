@@ -4,6 +4,8 @@ import todoServices from "../services/todoServices"
 import { authContext } from "../contexts/authContext"
 import TopicBar from "../components/TopicBar";
 import NewTodo from '../components/NewTodo'
+import { Button } from "react-bootstrap";
+import NewTopic from "../components/NewTopic";
 
 
 export default function UserDashboard() {
@@ -11,6 +13,7 @@ export default function UserDashboard() {
     const { authenticatedUser } = useContext(authContext)
     const [todosData, setTodosData] = useState([])
     const [topics, setTopics] = useState([]);
+    const [newTopicModalState, setNewTopicModalState] = useState(false)
 
     useEffect(() => {
         updateTodos()
@@ -28,10 +31,14 @@ export default function UserDashboard() {
 
     }
 
+    const handleNewTopicModal = () => {
+        setNewTopicModalState(!newTopicModalState)
+    }
 
     return (
         <div id="userdashboard">
-
+            <Button onClick={handleNewTopicModal}>New topic</Button>
+            {newTopicModalState && <NewTopic updateTodos={updateTodos} show={newTopicModalState} close={handleNewTopicModal} />}
             <div id="todos-window">
 
                 {
@@ -45,8 +52,7 @@ export default function UserDashboard() {
                     )
                 }
             </div>
-            {/* <TopicBar todos={todosData.userTodos} topicName={""} /> */}
-            {/* <ListTodos todos={todosData.userTodos} /> */}
+
         </div>
     )
 

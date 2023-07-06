@@ -47,8 +47,7 @@ export default function NewTodo({ topics, updateTodos, show, close, topicid }) {
             </select> */}
 
             <label>todo text:</label>
-            <textarea name="text" onChange={handleInputChange} value={inputState.text}></textarea>
-
+            <textarea name="text" onChange={handleInputChange} value={inputState.text} rows={10}></textarea>
             <Container>
                 <Button onClick={close}>Cancel</Button>
                 <Button onClick={sendTodo}>Create</Button>

@@ -14,7 +14,7 @@ export default function TopicBar({ topicName, todos, updateTodos, topicid, topic
     return (
         <div className="topicbar" data-topicid={topicid}>
             <div>
-                <h1>{topicName}</h1>
+                <h3>{topicName}</h3>
                 <Button onClick={handleNewTodoModal}>+</Button>
                 <NewTodo
                     topics={topics}
