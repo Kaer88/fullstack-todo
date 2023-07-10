@@ -37,8 +37,9 @@ export default function UserDashboard() {
 
     return (
         <div id="userdashboard">
-            <Button onClick={handleNewTopicModal} className="mx-auto">New topic</Button>
-            {newTopicModalState && <NewTopic updateTodos={updateTodos} show={newTopicModalState} close={handleNewTopicModal} />}
+            <div className='flex justify-center container my-3 py-3'>
+                <Button onClick={handleNewTopicModal}>New topic</Button>
+            </div>
             <div id="todos-window">
 
                 {
@@ -52,6 +53,7 @@ export default function UserDashboard() {
                     )
                 }
             </div>
+            {newTopicModalState && <NewTopic updateTodos={updateTodos} show={newTopicModalState} close={handleNewTopicModal} />}
 
         </div>
     )

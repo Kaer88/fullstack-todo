@@ -18,3 +18,11 @@
   padding: 5px;
   min-width: 25vw;
 }
+
+.formatted-input>input {
+  border: 1px solid black;
+}
+
+
+
+

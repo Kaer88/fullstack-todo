@@ -3,6 +3,7 @@ import userServices from "../services/userServices"
 import { useCookies } from "react-cookie"
 import { useNavigate } from "react-router-dom"
 import { authContext } from "../contexts/authContext"
+import { Button } from "react-bootstrap"
 
 export default function LoginForm() {
 
@@ -38,12 +39,12 @@ export default function LoginForm() {
     return (
         <div>
             <h1>Login</h1>
-            <div>
+            <div className="grid grid-cols-2 w-96 formatted-input gap-2 justify-items-center p-3">
                 <label htmlFor="">E-mail</label>
                 <input type="text" name="email" onChange={handleLoginInput} value={loginInput.email} />
                 <label htmlFor="">Password</label>
                 <input type="text" name="password" onChange={handleLoginInput} value={loginInput.password} />
-                <button onClick={sendLogin}>LOGIN</button>
+                <Button onClick={sendLogin}>LOGIN</Button>
             </div>
         </div>
     )

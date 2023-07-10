@@ -1,5 +1,6 @@
 import { useState } from "react"
 import userServices from "../services/userServices"
+import { Button } from "react-bootstrap"
 
 export default function RegisterForm() {
 
@@ -27,16 +28,16 @@ export default function RegisterForm() {
     }
 
     return (
-        <div id="register-form">
+        <div>
             <h1>Register</h1>
-            <div>
+            <div className="grid grid-cols-2 w-96 formatted-input gap-2 justify-items-center p-3">
                 <label>E-mail address</label>
                 <input name="email" type="text" onChange={handleRegisterInput} value={registerInput.email}></input>
                 <label>Password</label>
                 <input name="password" type="text" onChange={handleRegisterInput} value={registerInput.password}></input>
                 <label>Password again</label>
                 <input name="passwordAgain" type="text" onChange={handleRegisterInput} value={registerInput.passwordAgain}></input>
-                <button onClick={handleRegister}>REGISTER</button>
+                <Button onClick={handleRegister}>REGISTER</Button>
             </div>
         </div>
     )
