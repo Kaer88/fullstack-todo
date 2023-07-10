@@ -39,7 +39,7 @@ export default function LoginForm() {
     return (
         <div>
             <h1>Login</h1>
-            <div className="grid grid-cols-2 w-96 formatted-input gap-2 justify-items-center p-3">
+            <div className="grid grid-cols-2 w-96 formatted-input gap-2 justify-items-start p-3">
                 <label htmlFor="">E-mail</label>
                 <input type="text" name="email" onChange={handleLoginInput} value={loginInput.email} />
                 <label htmlFor="">Password</label>

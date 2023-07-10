@@ -21,6 +21,10 @@
 
 .formatted-input>input {
   border: 1px solid black;
+  border-radius: 10px;
+  width:15em;
+  height: 2em;
+  padding: 0px 1em;
 }
 
 

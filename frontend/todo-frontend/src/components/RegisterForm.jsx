@@ -30,12 +30,12 @@ export default function RegisterForm() {
     return (
         <div>
             <h1>Register</h1>
-            <div className="grid grid-cols-2 w-96 formatted-input gap-2 justify-items-center p-3">
-                <label>E-mail address</label>
+            <div className="grid grid-cols-2 w-96 formatted-input gap-2 justify-items-start p-3">
+                <label>E-mail: </label>
                 <input name="email" type="text" onChange={handleRegisterInput} value={registerInput.email}></input>
-                <label>Password</label>
+                <label>Password: </label>
                 <input name="password" type="text" onChange={handleRegisterInput} value={registerInput.password}></input>
-                <label>Password again</label>
+                <label>Password again: </label>
                 <input name="passwordAgain" type="text" onChange={handleRegisterInput} value={registerInput.passwordAgain}></input>
                 <Button onClick={handleRegister}>REGISTER</Button>
             </div>
