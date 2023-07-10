@@ -14,7 +14,7 @@ export default function TopicBar({ topicName, todos, updateTodos, topicid, topic
     return (
         <div className="topicbar" data-topicid={topicid}>
             <div>
-                <h3>{topicName}</h3>
+                <h4 style={{ textAlign: "center" }}>{topicName}</h4>
                 <Button onClick={handleNewTodoModal}>+</Button>
                 <NewTodo
                     topics={topics}

@@ -1,15 +1,16 @@
-
 #todos-window {
   display: flex;
   gap: 5em;
   justify-items: center;
+  margin-left: 2em;
 }
 
-.todo-container {
+.todo-list {
   display: flex;
-  gap: 5em;
-  margin: 3em;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+
 }
 
 .todo {
