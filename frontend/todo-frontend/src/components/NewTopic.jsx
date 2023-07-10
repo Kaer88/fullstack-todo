@@ -28,7 +28,7 @@ export default function NewTopic({ updateTodos, show, close }) {
             <label>Topic name:</label>
             <input type="text" onChange={handleInputChange} value={inputState}></input>
             <Container>
-                <Button onClick={close} >Cancel</Button>
+                <Button onClick={close} className="">Cancel</Button>
                 <Button onClick={sendCategory} >Create topic</Button>
             </Container>
 

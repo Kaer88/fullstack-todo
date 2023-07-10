@@ -37,7 +37,7 @@ export default function UserDashboard() {
 
     return (
         <div id="userdashboard">
-            <Button onClick={handleNewTopicModal}>New topic</Button>
+            <Button onClick={handleNewTopicModal} className="mx-auto">New topic</Button>
             {newTopicModalState && <NewTopic updateTodos={updateTodos} show={newTopicModalState} close={handleNewTopicModal} />}
             <div id="todos-window">
 
