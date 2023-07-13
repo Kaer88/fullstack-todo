@@ -23,8 +23,7 @@ export default function LandingPage() {
                         <div onClick={() => setDisplayLogin(!displayLogin)} className={`p-3 border-2 font-bold transition-colors ${displayLogin ? "bg-slate-500 text-black" : "bg-slate-800 text-white"}`}>Register</div>
                         <div onClick={() => setDisplayLogin(!displayLogin)} className={`p-3 border-2 font-bold transition-colors ${displayLogin ? "bg-slate-800 text-white" : "bg-slate-500 text-black"}`}>Login</div>
                     </div>
-                    {displayLogin ? null : <RegisterForm />}
-                    {displayLogin ? <LoginForm /> : null}
+                    {displayLogin ? <LoginForm /> : <RegisterForm />}
 
                 </div >
             </div>
