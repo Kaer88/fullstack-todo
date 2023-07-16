@@ -5,9 +5,9 @@ const todoController = {
     createTodo: async (req, res, next) => {
         try {
             const newTodo = await todoService.createTodo(req);
-            res.json(newTodo.rows)
+            res.json(newTodo.rows);
         } catch (err) {
-            next(err)
+            next(err);
         }
 
     },
@@ -26,28 +26,28 @@ const todoController = {
 
     readAllTodos: async (req, res, next) => {
         try {
-            const todos = await todoService.readAll()
-            res.json(todos.rows)
+            const todos = await todoService.readAll();
+            res.json(todos.rows);
         } catch (err) {
-            console.log(err)
+            console.log(err);
         }
 
     },
 
     readTodosId: async (req, res, next) => {
         try {
-            const { id } = req.params
-            console.log(id)
-            const todos = await todoService.readAllId(id)
-            const topics = await topicsService.getUserTopics(id)
+            const { id } = req.params;
+            console.log(id);
+            const todos = await todoService.readAllId(id);
+            const topics = await topicsService.getUserTopics(id);
             const responseObject = {
                 userTodos: todos.rows,
                 topics: topics.rows
-            }
-            res.json(responseObject)
+            };
+            res.json(responseObject);
         } catch (err) {
-            console.log(err)
-            res.status(500).json({ error: "dataread error" })
+            console.log(err);
+            res.status(500).json({ error: "dataread error" });
         }
 
     },
@@ -55,9 +55,18 @@ const todoController = {
     deleteTodo: async (req, res, next) => {
         try {
             const deleteQueryResponse = await todoService.deleteTodo(req);
-            res.json({ msg: "success", deleteQueryResponse })
+            res.json({ msg: "success", deleteQueryResponse });
         } catch (err) {
-            console.log(err)
+            console.log(err);
+        }
+    },
+
+    updateTodo: async (req, res, next) => {
+        try{
+             const updateResult = await todoService.updateTodo(req);
+             res.json(updateResult)
+        } catch(err) {
+            next(err)
         }
     }
 

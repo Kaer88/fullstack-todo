@@ -29,6 +29,20 @@ const todoService = {
         const { todoid, userid } = req.params;
         console.log(todoid, userid)
         return todoModel.delete(todoid, userid)
+    },
+
+    updateTodo: async (req) => {
+        const { userId, todoId } = req.params;
+        const updateData = req.body;
+        const dbTodo = await todoModel.readTodo(todoId);
+        const newData = {
+            title: updateData.title || dbTodo.rows[0].title,
+            text: updateData.text || dbTodo.rows[0].text,
+            isdone: updateData.isDone || dbTodo.rows[0].isdone
+        };
+        return todoModel.update(todoId, newData.title, newData.text, newData.isdone);
+
+
     }
 
 }
