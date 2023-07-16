@@ -7,6 +7,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { CookiesProvider } from 'react-cookie';
 import { AuthProvider } from './contexts/authContext.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import UserDashboard from './pages/UserDashboard.jsx';
 
 const router = createBrowserRouter([
   {
@@ -14,8 +15,16 @@ const router = createBrowserRouter([
     element: <LandingPage />
   },
   {
-    path: "/protected",
-    element: <App />
+    path: "/main",
+    element: <App />,
+    children: [
+      {
+        path: "/main",
+        element: <UserDashboard />
+      },
+
+    ]
+
   }
 ]);
 

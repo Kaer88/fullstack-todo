@@ -12,7 +12,7 @@ export default function LandingPage() {
 
     useEffect(() => {
         if (!Object.keys(!cookies.usertoken?.token)) {
-            navigate("/protected")
+            navigate("/main")
         }
     }, [])
 

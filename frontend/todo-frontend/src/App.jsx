@@ -3,6 +3,7 @@ import './App.css'
 import Auth from './components/Auth'
 import UserDashboard from './pages/UserDashboard'
 import NavBar from './components/NavBar'
+import { Outlet } from 'react-router-dom'
 
 function App() {
 
@@ -11,7 +12,7 @@ function App() {
 
     <Auth>
       <NavBar />
-      <UserDashboard />
+      <Outlet />
 
     </Auth>
 
