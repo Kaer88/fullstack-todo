@@ -4,7 +4,7 @@ import { authContext } from "../contexts/authContext"
 import { Button, Container, Modal } from "react-bootstrap"
 import Form from 'react-bootstrap/Form'
 
-export default function NewTodo({ topics, updateTodos, show, close, topicid }) {
+export default function NewTodo({ updateTodos, show, close, topicid }) {
 
     const { authenticatedUser } = useContext(authContext);
     const [inputState, setInputState] = useState({
@@ -26,6 +26,10 @@ export default function NewTodo({ topics, updateTodos, show, close, topicid }) {
                 .then(() => {
                     close()
                     updateTodos();
+                    setInputState({
+                        text: "",
+                        title: "",
+                    });
                 })
         } catch (err) {
             console.log(err);
