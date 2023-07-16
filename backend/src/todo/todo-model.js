@@ -17,7 +17,7 @@ const todoModel = {
 
     readTodo: async (id) => {
         return client.query(`
-            SELECT id title, text, isdone, date FROM todos
+            SELECT id, title, text, isdone, date FROM todos
             WHERE id = $1;
         `, [id]);
     },

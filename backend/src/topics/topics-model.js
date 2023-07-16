@@ -10,4 +10,9 @@ export default {
         return client.query("SELECT * FROM topics WHERE userid = $1", [userid])
     },
 
+    getTopicContent: async(topicId) => {
+        console.log(topicId)
+        return client.query("SELECT * FROM todos WHERE topicid = $1", [topicId])
+    }
+
 }

@@ -4,8 +4,6 @@ export const createUsersTable = `
         email VARCHAR(32) UNIQUE NOT NULL, 
         password VARCHAR(64) NOT NULL,
         created TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-
-
     )
 
 `

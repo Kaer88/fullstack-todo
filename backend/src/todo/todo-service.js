@@ -27,8 +27,7 @@ const todoService = {
     deleteTodo: async (req) => {
 
         const { todoid, userid } = req.params;
-        console.log(todoid, userid)
-        return todoModel.delete(todoid, userid)
+        return todoModel.delete(todoid, userid);
     },
 
     updateTodo: async (req) => {
@@ -38,13 +37,13 @@ const todoService = {
         const newData = {
             title: updateData.title || dbTodo.rows[0].title,
             text: updateData.text || dbTodo.rows[0].text,
-            isdone: updateData.isDone || dbTodo.rows[0].isdone
+            isdone: updateData.isDone ? true : false
         };
         return todoModel.update(todoId, newData.title, newData.text, newData.isdone);
 
 
     }
 
-}
+};
 
-export default todoService
+export default todoService;

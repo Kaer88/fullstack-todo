@@ -5,7 +5,6 @@ import { useCookies } from "react-cookie";
 export default function Auth({ children }) {
     const navigate = useNavigate("/")
     const [cookies] = useCookies("usertoken")
-    console.log(cookies)
     useEffect(() => {
         if (!cookies.usertoken?.token) navigate("/")
     }, [])

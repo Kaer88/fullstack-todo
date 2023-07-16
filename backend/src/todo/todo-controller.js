@@ -37,7 +37,6 @@ const todoController = {
     readTodosId: async (req, res, next) => {
         try {
             const { id } = req.params;
-            console.log(id);
             const todos = await todoService.readAllId(id);
             const topics = await topicsService.getUserTopics(id);
             const responseObject = {
@@ -46,8 +45,8 @@ const todoController = {
             };
             res.json(responseObject);
         } catch (err) {
-            console.log(err);
-            res.status(500).json({ error: "dataread error" });
+            next(err)
+           
         }
 
     },
@@ -57,16 +56,16 @@ const todoController = {
             const deleteQueryResponse = await todoService.deleteTodo(req);
             res.json({ msg: "success", deleteQueryResponse });
         } catch (err) {
-            console.log(err);
+            next(err)
         }
     },
 
     updateTodo: async (req, res, next) => {
         try{
              const updateResult = await todoService.updateTodo(req);
-             res.json(updateResult)
+             res.json(updateResult.rows[0]);
         } catch(err) {
-            next(err)
+            next(err);
         }
     }
 

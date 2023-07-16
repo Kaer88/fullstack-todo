@@ -9,5 +9,19 @@ export default {
             body: JSON.stringify({ name: topicName })
         })
         return response.json()
+    },
+
+    getTopicContent: async (userData, topicId) => {
+        if(userData.userid === undefined) return;
+        const topicContent = await fetch(
+            `http://localhost:8080/topics/${userData.userid}/${topicId}`,
+            {
+                headers: {
+                    "Content-type": "application/json",
+                    "Authorization": `Bearer ${userData.token}`,
+                },
+            }
+        );
+        return topicContent.json();
     }
 }

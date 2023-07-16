@@ -1,4 +1,3 @@
-
 export default {
     getAllTodos: async (userData) => {
         if (!userData.userid) return
@@ -26,7 +25,6 @@ export default {
 
     deleteTodo: async (userData, todoId) => {
         if (!userData || !todoId) return
-        console.log(userData)
         const deleteResponse = await fetch(`http://localhost:8080/todo/delete/${userData.userid}/${todoId}`, {
             method: "DELETE",
             headers: {
@@ -35,7 +33,19 @@ export default {
             },
         });
         return deleteResponse.json();
-    
+    },
+
+    updateTodo: async (userData, todoId, updateData) => {
+        const updateResponse = await fetch(`http://localhost:8080/todo/patch/${userData.userid}/${todoId}`, {
+            method: "PATCH",
+            headers: {
+                "Authorization": `Bearer ${userData.token}`,
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify(updateData)
+        } 
+        );
+        return await updateResponse.json();
 
     }
 

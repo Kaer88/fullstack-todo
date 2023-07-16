@@ -22,5 +22,16 @@ export default {
             console.log(err);
             next(err)
         }
+    },
+
+    getTopicContent: async (req, res, next) => {
+        try {
+            console.log(req.body)
+            const content = await topicsService.getTopicContent(req);
+            res.json(content.rows);
+        } catch(err) {
+            res.status(401).end();
+        }
+        
     }
 }

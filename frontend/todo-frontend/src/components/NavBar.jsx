@@ -1,9 +1,9 @@
 import { useContext, useState } from "react"
-import { Button, Container, NavDropdown } from "react-bootstrap"
+import { Button, Container, Nav, NavDropdown } from "react-bootstrap"
 import Navbar from "react-bootstrap/Navbar"
 import { authContext } from "../contexts/authContext"
 import { useCookies } from "react-cookie";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 export default function NavBar() {
 
     const { setAuthenticatedUser } = useContext(authContext);
@@ -31,6 +31,7 @@ export default function NavBar() {
             <NavDropdown title="Account">
                 <NavDropdown.Item onClick={logout}>Logout</NavDropdown.Item>
             </NavDropdown>
+            <Nav.Link href="/main">Overview</Nav.Link>
         </Navbar >
     )
 

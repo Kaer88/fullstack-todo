@@ -20,9 +20,15 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/main",
-        element: <UserDashboard />
-      },
+        element: <UserDashboard />,
+        children: [
+          {
+            path: "/main/:topic",
+            element: <UserDashboard />
+          },
 
+        ]
+      },
     ]
 
   }
@@ -34,6 +40,4 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <RouterProvider router={router} />
     </CookiesProvider>
   </AuthProvider>
-
-
 );
