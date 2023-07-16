@@ -39,27 +39,14 @@ export default function NewTodo({ topics, updateTodos, show, close, topicid }) {
             show={show}
             centered
         >
-            <Container style={
-                {
-                    padding: '1em',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '1em'
-
-                }
-            }>
+            <Container className="p-2 flex-col flex gap-2">
                 <Form.Group>
                     <Form.Control name="title" onChange={handleInputChange} value={inputState.title} placeholder="Todo Title"></Form.Control>
                 </Form.Group>
                 <Form.Group>
                     <Form.Control as="textarea" rows={10} name="text" onChange={handleInputChange} value={inputState.text} placeholder="Todo text"></Form.Control>
                 </Form.Group>
-                <Container style={
-                    {
-                        display: 'flex',
-                        justifyContent: 'space-between'
-                    }
-                }>
+                <Container className="flex justify-evenly">
                     <Button onClick={close}>Cancel</Button>
                     <Button onClick={sendTodo}>Create</Button>
                 </Container>
