@@ -1,13 +1,13 @@
 import todoServices from "../services/todoServices"
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { authContext } from "../contexts/authContext"
-import { Card } from "react-bootstrap"
+import { Card, Form } from "react-bootstrap"
 
 
 
 export default function TodoItem({ todo, updateTodos }) {
     const { authenticatedUser } = useContext(authContext)
-
+    const [isDone, setIsDone] = useState(todo.isdone)
     const handleDeleteButton = async (e) => {
         try {
             await todoServices.deleteTodo(authenticatedUser, e.target.dataset.todoid)
@@ -18,17 +18,19 @@ export default function TodoItem({ todo, updateTodos }) {
 
     }
 
+    const handleCheck = (e) => {
+        setIsDone()
+    }
     return (
         <Card
+            className="w-60"
             key={todo.id}
-            style={{
-                minWidth: "15vw",
-                maxWidth: "15vw"
-            }
-            } >
+        >
             <Card.Body>
-                <p>{todo.text}</p>
-                {/true/.test(todo.isdone) ? <p>kész</p> : <p>nincs kész</p>}
+                <div className="flex justify-between">
+                    <h5>{todo.title}</h5>
+                    <Form.Check checked={isDone} onChange={handleCheck}></Form.Check>
+                </div>
                 <p>{todo.date.slice(0, 10)}</p>
                 <p>{todo.topic_name}</p>
                 <button onClick={handleDeleteButton} data-todoid={todo.id}>X</button>
