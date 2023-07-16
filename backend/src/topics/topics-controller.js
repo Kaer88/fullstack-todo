@@ -3,6 +3,7 @@ import topicsService from "./topics-service"
 export default {
     createTopic: async (req, res, next) => {
         try {
+            console.log(res)
             const result = await topicsService.createUserTopic(req);
             res.json(result.rows);
         } catch (err) {

@@ -39,6 +39,7 @@ const todoController = {
     readTodosId: async (req, res, next) => {
         try {
             const { id } = req.params
+            console.log(id)
             const todos = await todoService.readAllId(id)
             const topics = await topicsService.getUserTopics(id)
             const responseObject = {
