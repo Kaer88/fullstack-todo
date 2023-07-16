@@ -2,12 +2,14 @@ import { useContext, useState } from "react"
 import todoServices from "../services/todoServices"
 import { authContext } from "../contexts/authContext"
 import { Button, Container, Modal } from "react-bootstrap"
+import Form from 'react-bootstrap/Form'
 
 export default function NewTodo({ topics, updateTodos, show, close, topicid }) {
 
     const { authenticatedUser } = useContext(authContext);
     const [inputState, setInputState] = useState({
-        text: ""
+        text: "",
+        title: "",
     });
 
     const handleInputChange = (e) => {
@@ -29,28 +31,38 @@ export default function NewTodo({ topics, updateTodos, show, close, topicid }) {
             console.log(err);
         }
     };
-
+    
     return (
 
 
         <Modal
             show={show}
             centered
-
         >
-            {/* <label>Topic:</label>
-            <select onChange={handleInputChange} value={inputState.category} name="topicid">
-                <option></option>
+            <Container style={
                 {
-                    topics.map(topic => <option key={topic.id} value={topic.id}>{topic.name}</option>)
-                }
-            </select> */}
+                    padding: '1em',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '1em'
 
-            <label>todo text:</label>
-            <textarea name="text" onChange={handleInputChange} value={inputState.text} rows={10}></textarea>
-            <Container>
-                <Button onClick={close}>Cancel</Button>
-                <Button onClick={sendTodo}>Create</Button>
+                }
+            }>
+                <Form.Group>
+                    <Form.Control name="title" onChange={handleInputChange} value={inputState.title} placeholder="Todo Title"></Form.Control>
+                </Form.Group>
+                <Form.Group>
+                    <Form.Control as="textarea" rows={10} name="text" onChange={handleInputChange} value={inputState.text} placeholder="Todo text"></Form.Control>
+                </Form.Group>
+                <Container style={
+                    {
+                        display: 'flex',
+                        justifyContent: 'space-between'
+                    }
+                }>
+                    <Button onClick={close}>Cancel</Button>
+                    <Button onClick={sendTodo}>Create</Button>
+                </Container>
 
 
             </Container>

@@ -29,7 +29,7 @@ export default function LoginForm() {
             setAuthenticatedUser({
                 ...responseToken
             });
-            navigate("/protected");
+            navigate("/main");
         } catch (err) {
             console.log(err);
         }
