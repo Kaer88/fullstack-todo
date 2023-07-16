@@ -3,10 +3,8 @@ import todoService from "./todo-service"
 
 const todoController = {
     createTodo: async (req, res, next) => {
-        const { text, topicid } = req.body;
-        const { id } = req.params;
         try {
-            const newTodo = await todoService.createTodo(text, id, topicid);
+            const newTodo = await todoService.createTodo(req);
             res.json(newTodo.rows)
         } catch (err) {
             next(err)

@@ -8,7 +8,6 @@ export default {
 
     getUserTopics: async (userid) => {
         return client.query("SELECT * FROM topics WHERE userid = $1", [userid])
-    }
-
+    },
 
 }

@@ -22,6 +22,7 @@ CREATE TABLE IF NOT EXISTS topics (
 export const createTodoTable = `
 CREATE TABLE IF NOT EXISTS todos(
     id VARCHAR(24) PRIMARY KEY,
+    title VARCHAR(200) NOT NULL, 
     text TEXT NOT NULL, 
     isdone BOOLEAN NOT NULL,
     date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

@@ -3,9 +3,11 @@ import { nanoid } from 'nanoid'
 
 const todoService = {
 
-    createTodo: async (text, userid, topicid) => {
-        const id = nanoid(8)
-        return todoModel.create(id, text, userid, topicid)
+    createTodo: async (req) => {
+        const { text, topicid, title } = req.body;
+        const { id } = req.params;
+        const newTodoId = nanoid(8)
+        return todoModel.create(newTodoId, text, title, id, topicid)
     },
 
     readTodo: async (id) => {

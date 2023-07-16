@@ -4,8 +4,8 @@ import { createTodoQuery, deleteTodoQuery } from "./todo-queries";
 
 
 const todoModel = {
-    create: async (id, text, userid, topicid) => {
-        return client.query(createTodoQuery, [id, text, false, userid, topicid])
+    create: async (newTodoId, text, title, userid, topicid) => {
+        return client.query(createTodoQuery, [newTodoId, title, text, false, userid, topicid])
     },
     read: async (id) => {
         return client.query(`
@@ -34,7 +34,16 @@ const todoModel = {
     },
     delete: async (todoId, userId) => {
         return client.query(deleteTodoQuery, [todoId, userId])
+    },
+
+    getTodosByTopic: async (topicId, userId) => {
+        return client.query(`
+        SELECT todos.*, topics.name FROM todos
+            JOIN topics ON(topics.id = $2)
+            WHERE todos.userid = $1
+        `, [userId, topicId])
     }
+
 }
 
 export default todoModel
