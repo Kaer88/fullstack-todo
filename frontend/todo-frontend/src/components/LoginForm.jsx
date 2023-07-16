@@ -13,7 +13,8 @@ export default function LoginForm() {
         email: "",
         password: ""
     })
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const [errorState, setErrorState] = useState(false);
 
     const handleLoginInput = (e) => {
         setLoginInput({
@@ -21,7 +22,7 @@ export default function LoginForm() {
             [e.target.name]: e.target.value
         });
     }
-    
+
     const sendLogin = async () => {
         try {
             const responseToken = await userServices.login(loginInput);
@@ -31,7 +32,7 @@ export default function LoginForm() {
             });
             navigate("/main");
         } catch (err) {
-            console.log(err);
+            setErrorState(true);
         }
 
     }
@@ -45,6 +46,7 @@ export default function LoginForm() {
                 <label htmlFor="">Password</label>
                 <input type="text" name="password" onChange={handleLoginInput} value={loginInput.password} />
                 <Button onClick={sendLogin}>LOGIN</Button>
+                {errorState && <div><span className="text-red-700 font-bold">Login failed</span></div>}
             </div>
         </div>
     )
