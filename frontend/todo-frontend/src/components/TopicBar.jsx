@@ -12,8 +12,8 @@ export default function TopicBar({ topicName, todos, updateTodos, topicid, topic
 
 
     return (
-        <div className="w-64 flex-col " data-topicid={topicid}>
-            <div className="flex-col align">
+        <div data-topicid={topicid}>
+            <div className="flex-col align w-48">
 
                 <h4>{topicName}</h4>
                 <Button onClick={handleNewTodoModal}>New item</Button>

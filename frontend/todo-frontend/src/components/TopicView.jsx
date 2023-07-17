@@ -7,6 +7,7 @@ import TopicList from "./TopicList";
 import { Button, Container } from "react-bootstrap";
 import { dataContext } from "../contexts/dataContext";
 import NewTopic from "./NewTopic";
+import NewTodo from "./NewTodo";
 
 export default function TopicView() {
     const { topic } = useParams();
@@ -14,6 +15,7 @@ export default function TopicView() {
     const { authenticatedUser } = useContext(authContext);
     const { contextualData } = useContext(dataContext);
     const [newTopicModalState, setNewTopicModalState] = useState(false);
+    const [showNewTodoModal, setShowNewTodoModal] = useState(false)
 
 
     const [topicList, setTopicList] = useState([]);
@@ -33,31 +35,46 @@ export default function TopicView() {
             console.log(err);
         }
     }
-
+    const handleNewTodoModal = () => {
+        setShowNewTodoModal(!showNewTodoModal)
+    }
     const handleNewTopicModal = () => {
         setNewTopicModalState(!newTopicModalState)
     }
 
     return (
-        <Container className="flex">
-            <div>
+        <div className="flex">
+            <div className="flex-col flex gap-2 p-2">
                 <Button onClick={handleNewTopicModal}>New topic</Button>
+                <Button onClick={handleNewTodoModal}>New todo</Button>
             </div>
             <TopicList topics={topicList.map(topic => ({ name: topic.name, id: topic.id }))} />
             <div className="grid-flow-column grid">
                 {topic &&
-                    items.filter(todo => todo.topicid = topic)?.map(item => {
-                        return <TodoItem
-                            key={item.id}
-                            todo={item}
-                            updateTodos={updateTodos}
-                            detailed={true}
-                        />
-                    })}
+                    <>
+
+                        <div>
+                            {
+                                items.filter(todo => todo.topicid = topic)?.map(item => {
+                                    return <TodoItem
+                                        key={item.id}
+                                        todo={item}
+                                        updateTodos={updateTodos}
+                                        detailed={true}
+                                    />
+                                })
+                            }
+                        </div>
+                    </>
+                }
             </div>
             {newTopicModalState && <NewTopic updateTodos={updateTodos} show={newTopicModalState} close={handleNewTopicModal} />}
-
-        </Container>
+            <NewTodo
+                topicid={topic}
+                show={showNewTodoModal}
+                close={handleNewTodoModal}
+                updateTodos={updateTodos} />
+        </div>
     );
 
 

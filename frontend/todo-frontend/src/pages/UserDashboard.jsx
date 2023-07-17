@@ -46,7 +46,7 @@ export default function UserDashboard() {
                 <div>
                     <Button onClick={handleNewTopicModal}>New topic</Button>
                 </div>
-                <Container>
+                <Container className="flex gap-5">
                     <Overview todosData={todosData} topics={topics} updateTodos={updateTodos} />
                 </Container>
             </div>
