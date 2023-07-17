@@ -7,7 +7,7 @@ export default function TopicList({ topics }) {
             {
                 topics.map(topic => (
                     <div key={topic.id}>
-                        <Link to={`/main/${topic.id}`}>{topic.name}</Link>
+                        <Link to={`/main/detailed/${topic.id}`}>{topic.name}</Link>
                     </div>
                 ))
             }

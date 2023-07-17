@@ -8,6 +8,9 @@ import { CookiesProvider } from 'react-cookie';
 import { AuthProvider } from './contexts/authContext.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import UserDashboard from './pages/UserDashboard.jsx';
+import TopicView from './components/TopicView.jsx';
+import ListTodos from './components/ListTodos.jsx';
+import { DataContextProvider } from './contexts/dataContext.jsx';
 
 const router = createBrowserRouter([
   {
@@ -21,12 +24,15 @@ const router = createBrowserRouter([
       {
         path: "/main",
         element: <UserDashboard />,
+      },
+      {
+        path: "/main/detailed",
+        element: <TopicView />,
         children: [
           {
-            path: "/main/:topic",
-            element: <UserDashboard />
-          },
-
+            path: ":topic",
+            element: <ListTodos />
+          }
         ]
       },
     ]
@@ -36,8 +42,10 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <AuthProvider>
-    <CookiesProvider>
-      <RouterProvider router={router} />
-    </CookiesProvider>
+    <DataContextProvider>
+      <CookiesProvider>
+        <RouterProvider router={router} />
+      </CookiesProvider>
+    </DataContextProvider>
   </AuthProvider>
 );

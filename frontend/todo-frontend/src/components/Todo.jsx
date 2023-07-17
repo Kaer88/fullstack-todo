@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 
 
-export default function TodoItem({ todo, updateTodos }) {
+export default function TodoItem({ todo, updateTodos, detailed }) {
     const { authenticatedUser } = useContext(authContext);
 
     const handleDeleteButton = async (e) => {
@@ -40,6 +40,15 @@ export default function TodoItem({ todo, updateTodos }) {
                     {todo.title}
                 </Card.Title>
                 <Badge>{todo.date.slice(0, 10).replace(/-/g, ".")}</Badge>
+                {
+                    detailed &&
+                    <div>
+                        <p>
+                            {todo.text}
+                        </p>
+                    </div>
+
+                }
             </Card.Body>
             <Card.Footer className="flex justify-between items-center">
 

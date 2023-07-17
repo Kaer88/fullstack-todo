@@ -31,7 +31,8 @@ export default function NavBar() {
             <NavDropdown title="Account">
                 <NavDropdown.Item onClick={logout}>Logout</NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link href="/main">Overview</Nav.Link>
+            <Link to="/main">Overview</Link>
+            <Link to="/main/detailed">Detailed</Link>
         </Navbar >
     )
 

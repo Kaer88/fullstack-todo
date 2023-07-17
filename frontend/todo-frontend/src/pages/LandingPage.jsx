@@ -11,7 +11,7 @@ export default function LandingPage() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (!Object.keys(!cookies.usertoken?.token)) {
+        if (Object.keys(cookies.usertoken?.token)) {
             navigate("/main")
         }
     }, [])
