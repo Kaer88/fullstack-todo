@@ -39,9 +39,8 @@ export default function UserDashboard() {
     }
 
     return (
-        <div id="userdashboard" className="overflow-hidden overflow-x-scroll min-h-screen">
-            <div className='flex justify-center container my-3 py-3'>
-            </div>
+        <div id="userdashboard" className="overflow-hidden overflow-x-scroll min-h-screen mt-6">
+ 
             <div id="todos-window">
                 <div>
                     <Button onClick={handleNewTopicModal}>New topic</Button>

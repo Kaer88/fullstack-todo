@@ -43,7 +43,7 @@ export default function TopicView() {
     }
 
     return (
-        <div className="flex">
+        <div className="flex mt-6">
             <div className="flex-col flex gap-2 p-2">
                 <Button onClick={handleNewTopicModal}>New topic</Button>
                 <Button onClick={handleNewTodoModal}>New todo</Button>
@@ -53,7 +53,7 @@ export default function TopicView() {
                 {topic &&
                     <>
 
-                        <div>
+                        <Container>
                             {
                                 items.filter(todo => todo.topicid = topic)?.map(item => {
                                     return <TodoItem
@@ -64,7 +64,7 @@ export default function TopicView() {
                                     />
                                 })
                             }
-                        </div>
+                        </Container>
                     </>
                 }
             </div>
